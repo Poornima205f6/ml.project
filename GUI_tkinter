@@ -1,0 +1,171 @@
+# Tkinter is a Python binding to the Tk GUI toolkit.
+import tkinter as tk
+# pickel is used for  converting a Python object into a byte stream to store it in a
+# file/database, maintain program state across sessions, or transport data over the network.
+import pickle
+# pandas is python library used for working with data sets
+import pandas as pd
+#from PIL import ImageTk, Image
+
+# Create a tkinter window
+window = tk.Tk()
+# Set the size of the window
+window.geometry("500x500")
+# Load the background image
+#bg_image = Image.open("C:\\Users\\kollu\\OneDrive\\Desktop\\python\\tim-foster-o4mP43oPGHk-unsplash.jpg")
+#bg_image = bg_image.resize((window.winfo_screenwidth(), window.winfo_screenheight()))
+#bg_photo = ImageTk.PhotoImage(bg_image)
+# Create a label widget for the background image
+#bg_label = tk.Label(window, image=bg_photo)
+#bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+#bg_label.lower()
+with open("rf.pk1", "rb") as f:
+    # Load the pickled object
+    rf = pickle.load(f)
+#with open("scaler.pkl", "rb") as f:
+    # Load the pickled object
+    #scaler = pickle.load(f)
+# Create input fields for each feature
+dgn_label = tk.Label(window, text="Diagnosis (DGN):")
+dgn_entry = tk.Entry(window)
+pre4_label = tk.Label(window, text="PRE4:")
+pre4_entry = tk.Entry(window)
+pre5_label = tk.Label(window, text="PRE5:")
+pre5_entry = tk.Entry(window)
+pre6_label = tk.Label(window, text="PRE6:")
+pre6_entry = tk.Entry(window)
+pre7_label = tk.Label(window, text="PRE7:")
+pre7_entry = tk.Entry(window)
+pre8_label = tk.Label(window, text="PRE8:")
+pre8_entry = tk.Entry(window)
+pre9_label = tk.Label(window, text="PRE9:")
+pre9_entry = tk.Entry(window)
+pre10_label = tk.Label(window, text="PRE10:")
+pre10_entry = tk.Entry(window)
+pre11_label = tk.Label(window, text="PRE11:")
+pre11_entry = tk.Entry(window)
+pre14_label = tk.Label(window, text="PRE14:")
+pre14_entry = tk.Entry(window)
+pre17_label = tk.Label(window, text="PRE17:")
+pre17_entry = tk.Entry(window)
+pre19_label = tk.Label(window, text="PRE19:")
+pre19_entry = tk.Entry(window)
+pre25_label = tk.Label(window, text="PRE25:")
+pre25_entry = tk.Entry(window)
+pre30_label = tk.Label(window, text="PRE30:")
+pre30_entry = tk.Entry(window)
+pre32_label = tk.Label(window, text="PRE32:")
+pre32_entry = tk.Entry(window)
+age_label = tk.Label(window, text="AGE:")
+age_entry = tk.Entry(window)
+
+
+# Add the input fields to the window
+dgn_label.pack()
+dgn_entry = tk.Entry(window, width=50)
+dgn_entry.pack()
+pre4_label.pack()
+pre4_entry = tk.Entry(window, width=50)
+pre4_entry.pack()
+pre5_label.pack()
+pre5_entry = tk.Entry(window, width=50)
+pre5_entry.pack()
+pre6_label.pack()
+pre6_entry = tk.Entry(window, width=50)
+pre6_entry.pack()
+pre7_label.pack()
+pre7_entry = tk.Entry(window, width=50)
+pre7_entry.pack()
+pre8_label.pack()
+pre8_entry = tk.Entry(window, width=50)
+pre8_entry.pack()
+pre9_label.pack()
+pre9_entry = tk.Entry(window, width=50)
+pre9_entry.pack()
+pre10_label.pack()
+pre10_entry = tk.Entry(window, width=50)
+pre10_entry.pack()
+pre11_label.pack()
+pre11_entry = tk.Entry(window, width=50)
+pre11_entry.pack()
+pre14_label.pack()
+pre14_entry = tk.Entry(window, width=50)
+pre14_entry.pack()
+pre17_label.pack()
+pre17_entry = tk.Entry(window, width=50)
+pre17_entry.pack()
+pre19_label.pack()
+pre19_entry = tk.Entry(window, width=50)
+pre19_entry.pack()
+pre25_label.pack()
+pre25_entry = tk.Entry(window, width=50)
+pre25_entry.pack()
+pre30_label.pack()
+pre30_entry = tk.Entry(window, width=50)
+pre30_entry.pack()
+pre32_label.pack()
+pre32_entry = tk.Entry(window, width=50)
+pre32_entry.pack()
+age_label.pack()
+age_entry = tk.Entry(window, width=50)
+age_entry.pack()
+
+# Create a function to collect the data
+def collect_data():
+    dgn = dgn_entry.get()
+    pre4 = pre4_entry.get()
+    pre5 = pre5_entry.get()
+    pre6 = pre6_entry.get()
+    pre7 = pre7_entry.get()
+    pre8 = pre8_entry.get()
+    pre9 = pre9_entry.get()
+    pre10 = pre10_entry.get()
+    pre11 = pre11_entry.get()
+    pre14 = pre14_entry.get()
+    pre17 = pre17_entry.get()
+    pre19 = pre19_entry.get()
+    pre25 = pre25_entry.get()
+    pre30 = pre30_entry.get()
+    pre32 = pre32_entry.get()
+    age = age_entry.get()
+    num_feat = ['DGN', 'PRE4', 'PRE7', 'PRE8', 'PRE9', 'PRE10', 'PRE11', 'PRE14', 'PRE17', 'PRE19', 'PRE25', 'PRE30', 'PRE32', 'AGE']
+    cols = ['DGN', 'PRE4', 'PRE7', 'PRE8', 'PRE9', 'PRE10', 'PRE11', 'PRE14', 'PRE17', 'PRE19', 'PRE25', 'PRE30', 'PRE32', 'AGE']
+    test_case = pd.DataFrame(columns=cols)
+    test_case = pd.DataFrame({
+        'DGN': [dgn],
+        'PRE4': [pre4],
+        'PRE5': [pre5],
+        'PRE6': [pre6],
+        'PRE7': [pre7],
+        'PRE8': [pre8],
+        'PRE9': [pre9],
+        'PRE10': [pre10],
+        'PRE11': [pre11],
+        'PRE14': [pre14],
+        'PRE17': [pre17],
+        'PRE19': [pre19],
+        'PRE25': [pre25],
+        'PRE30': [pre30],
+        'PRE32': [pre32],
+        'AGE': [age],
+    })
+    #test_case[num_feat] = scaler.transform(test_case[num_feat])
+    t_pred = rf.predict(test_case)
+
+    if (t_pred == 1):
+        output = "The patient is at high risk and may not survive the first year after surgery"
+    else:
+        output = "The patient is at low risk and may survive the first year after surgery"
+    output_label = tk.Label(window, text="Output goes here")
+
+    # Pack the Label widget
+    output_label.pack()
+    output_label.config(text=output)
+
+
+# Create a button to submit the data
+submit_button = tk.Button(window, text="Submit", command=collect_data)
+submit_button.pack()
+
+# Run the tkinter event loop
+window.mainloop()
